@@ -15,6 +15,4 @@ const {
   body: file
 })
 
-
-
 console.log(await body.json())

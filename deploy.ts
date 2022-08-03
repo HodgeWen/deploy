@@ -1,6 +1,7 @@
-import Fastify from 'fastify'
+import Fastify, { FastifyRequest } from 'fastify'
 import multipart from '@fastify/multipart'
-import fs from 'node:fs'
+import { readFileSync, writeFileSync } from 'node:fs'
+import { writeFile } from 'node:fs/promises'
 
 const fastify = Fastify({
   logger: {
@@ -19,7 +20,7 @@ const fastify = Fastify({
 fastify.register(multipart)
 fastify.addContentTypeParser('*', {}, (request, payload, done) => {
   payload.on('error', err => done(err))
-  let buffer = []
+  let buffer: any[] = []
   let result
   payload.on('data', chunk => {
     buffer.push(chunk)
@@ -31,11 +32,12 @@ fastify.addContentTypeParser('*', {}, (request, payload, done) => {
 })
 
 fastify.post('/deploy', async (req, reply) => {
-  fs.writeFileSync('json.json', req.body)
+   await writeFile('json.json', req.body as any)
 
   return {
     data: 'hello world',
-    msg: '成功'
+    msg: '成功',
+    code: 200
   }
 })
 
