@@ -4,7 +4,7 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "server": "nodemon --watch packages/server/**/*.ts --exec \"tsx\" packages/server/start.ts",
+    "server": "nodemon --watch packages/server --exec \"tsx\" packages/server/start.ts",
     "dep": "tsx packages/client/src/cli.ts"
   },
   "keywords": [],
