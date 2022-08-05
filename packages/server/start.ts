@@ -2,6 +2,8 @@ import Fastify, { FastifyRequest } from 'fastify'
 import multipart from '@fastify/multipart'
 import { readFileSync, writeFileSync } from 'node:fs'
 import { writeFile } from 'node:fs/promises'
+import { tar } from 'compressing'
+import router from './router'
 
 const fastify = Fastify({
   logger: {
@@ -18,28 +20,8 @@ const fastify = Fastify({
 })
 
 fastify.register(multipart)
-fastify.addContentTypeParser('*', {}, (request, payload, done) => {
-  payload.on('error', err => done(err))
-  let buffer: any[] = []
-  let result
-  payload.on('data', chunk => {
-    buffer.push(chunk)
-  })
-  payload.on('end', () => {
-    result = Buffer.concat(buffer)
-    done(null, result)
-  })
-})
 
-fastify.post('/deploy', async (req, reply) => {
-   await writeFile('json.json', req.body as any)
-
-  return {
-    data: 'hello world',
-    msg: '成功',
-    code: 200
-  }
-})
+router(fastify)
 
 fastify.listen({ port: 22333 }).catch(reason => {
   fastify.log.error(reason)

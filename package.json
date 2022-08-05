@@ -4,15 +4,22 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "server": "nodemon --watch **/*.ts --exec \"tsx\" deploy.ts"
+    "server": "nodemon --watch packages/server/**/*.ts --exec \"tsx\" packages/server/start.ts",
+    "dep": "tsx packages/client/src/cli.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@fastify/multipart": "^7.1.0",
+    "@types/pump": "^1.1.1",
+    "chalk": "^5.0.1",
+    "compressing": "^1.6.2",
+    "esbuild": "^0.14.53",
     "fastify": "^4.3.0",
+    "fastify-plugin": "^4.0.0",
     "fe-dk": "^1.0.14",
+    "pump": "^3.0.0",
     "undici": "^5.8.0"
   },
   "devDependencies": {
