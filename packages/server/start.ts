@@ -1,8 +1,7 @@
-import Fastify, { FastifyRequest } from 'fastify'
+import Fastify from 'fastify'
 import multipart from '@fastify/multipart'
-import { readFileSync, writeFileSync } from 'node:fs'
-import { writeFile } from 'node:fs/promises'
-import { tar } from 'compressing'
+import cors from '@fastify/cors'
+
 import router from './router'
 
 const fastify = Fastify({
@@ -20,6 +19,7 @@ const fastify = Fastify({
 })
 
 fastify.register(multipart)
+fastify.register(cors)
 
 router(fastify)
 

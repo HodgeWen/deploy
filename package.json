@@ -5,12 +5,14 @@
   "type": "module",
   "scripts": {
     "server": "nodemon --watch packages/server --exec \"tsx\" packages/server/start.ts",
+    "build": "tsc packages/server/start.ts",
     "dep": "tsx packages/client/src/cli.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fastify/cors": "^8.1.0",
     "@fastify/multipart": "^7.1.0",
     "@types/pump": "^1.1.1",
     "chalk": "^5.0.1",

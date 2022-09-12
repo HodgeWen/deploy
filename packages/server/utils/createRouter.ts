@@ -1,4 +1,4 @@
-import type{ FastifyRequest, FastifyReply, FastifyInstance } from 'fastify'
+import type { FastifyRequest, FastifyReply, FastifyInstance } from 'fastify'
 import path, { join, resolve } from 'path'
 
 interface Routes {
@@ -13,11 +13,13 @@ type RouterConfig = {
 
 export default function createRouter(prefix: string, routerConf: RouterConfig) {
   return (fastify: FastifyInstance) => {
-
     Object.keys(routerConf).forEach(method => {
       const handlers = routerConf[method]
       Object.keys(handlers).forEach(key => {
-        fastify[method.toLowerCase()](join(`/${prefix}`, key).replace(/\/$/, ''), handlers[key])
+        fastify[method.toLowerCase()](
+          join(`/${prefix}`, key).replace(/\/$/, '').replace(/\\/g, '/'),
+          handlers[key]
+        )
       })
     })
   }
