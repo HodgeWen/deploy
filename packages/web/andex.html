@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      img {
+        height: 100px;
+        width: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrap">
+      <div>
+        背景1
+
+        <img /> <input type="file" class="upload-item" />
+      </div>
+      <div>
+        背景2
+
+        <img /> <input type="file" class="upload-item" />
+      </div>
+      <div>
+        背景3
+
+        <img /> <input type="file" class="upload-item" />
+      </div>
+      <div>
+        背景4
+
+        <img /> <input type="file" class="upload-item" />
+      </div>
+      <div>
+        背景5
+
+        <img /> <input type="file" class="upload-item" />
+      </div>
+      <div>
+        背景6
+
+        <img /> <input type="file" class="upload-item" />
+      </div>
+      <div>
+        背景7
+
+        <img /> <input type="file" class="upload-item" />
+      </div>
+      <div>
+        背景8
+
+        <img /> <input type="file" class="upload-item" />
+      </div>
+      <div>
+        背景9
+
+        <img /> <input type="file" class="upload-item" />
+      </div>
+      <div>
+        背景10
+        <img />
+        <input type="file" class="upload-item" />
+      </div>
+      <div>
+        背景11
+        <img />
+        <input type="file" class="upload-item" />
+      </div>
+      <div>
+        背景12
+        <img />
+        <input type="file" class="upload-item" />
+      </div>
+    </div>
+
+    <script>
+      const upload = document.querySelector('#upload')
+
+      const pre = 'http://127.0.0.1:22333'
+
+      const inputs = document.querySelectorAll('[type=file]')
+
+      inputs.forEach((input, index) => {
+        input.addEventListener('change', e => {
+          const files = Array.prototype.slice.call(e.target.files)
+          e.target.value = ''
+
+          const formData = new FormData()
+          formData.append('file', files[0])
+          formData.append('filename', `bg${index + 1}`)
+          fetch(`${pre}/upload`, {
+            method: 'post',
+            body: formData
+          })
+        })
+      })
+
+      const prefix = 'http://127.0.0.1'
+      const images = document.querySelectorAll('img')
+      const getList = async () => {
+        const res = await fetch(`${pre}/upload/list`)
+        const data = await res.json()
+        data.data.forEach(filename => {
+          if (/bg(\d+)\.(jpg|png)$/.test(filename)) {
+            let n = RegExp.$1
+
+            if (n === '') return
+            images[+n - 1].src = `${prefix}/${filename}`
+          }
+        })
+      }
+
+      getList()
+    </script>
+  </body>
+</html>

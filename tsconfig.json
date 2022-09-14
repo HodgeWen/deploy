@@ -1,13 +1,40 @@
 {
   "compilerOptions": {
+    "jsx": "preserve",
+    // 严格模式
     "strict": true,
+    // 不允许隐式的any, 为false则没有指定类型的函数参数不再报错
     "noImplicitAny": false,
-    "moduleResolution": "Node",
-    "allowSyntheticDefaultImports": true,
+    // 指定编译的目标
+    "target": "ES2018",
+    // 指定项目使用的模块系统
     "module": "ESNext",
-    "target": "ESNext",
-    "experimentalDecorators": true,
+    // 指定包含的类型库
+    "lib": ["ESNext", "DOM"],
+    // 模块解析策略
+    "moduleResolution": "Node",
+    // 如果设置了paths属性, 这个是必要的, 作为paths的基础路径, 为.表示配置文件所在的目录
+    "baseUrl": ".",
+    // 指定编译后的根目录保持结构
+    "rootDir": ".",
+    // 不允许存在未使用的本地变量(为true意味着本地声明的变量不使用会报错, 导入的不会)
+    "noUnusedLocals": true,
+    // 允许合成默认导入, 为true意味着可以将一个没有默认导出的模块导出为对象, 只要import * as O from 'module'
+    // "allowSyntheticDefaultImports": true,
+    // 跳过类型检查
+    "skipLibCheck": true,
+    // ES模块互操作性, 一旦指定, allowSyntheticDefaultImports选项会被设置为true
+    "esModuleInterop": true,
+    // 源代码映射
+    "sourceMap": true,
+    // 强制文件名称一致(解决文件大小写不敏感的bug)
+    "forceConsistentCasingInFileNames": true,
+    // 指定一个导入的内容在不作为值使用时的行为, 如果导入一个类型, 需要使用 import type, 这个能解决循环引用的bug
+    "importsNotUsedAsValues": "error",
+    // 孤立模块, 设置了则所有实现的文件都是模块, 并且可以保持编译时的模块结构, 而不是编译到一个文件中去
     "isolatedModules": true,
-    "importsNotUsedAsValues": "error"
+    "types": ["vite/client", "element-ultra/global"]
   },
+  "include": ["packages"],
+  "exclude": ["node_modules"]
 }
