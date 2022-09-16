@@ -2,10 +2,9 @@
   "name": "deploy",
   "version": "1.0.0",
   "description": "",
-  "type": "module",
   "scripts": {
     "server": "nodemon --watch packages/server --exec \"tsx\" packages/server/start.ts",
-    "build": "tsc packages/server/start.ts",
+    "build-server": "tsx build/index.ts",
     "dep": "tsx packages/client/src/cli.ts"
   },
   "keywords": [],
@@ -17,20 +16,27 @@
     "@types/pump": "^1.1.1",
     "chalk": "^5.0.1",
     "compressing": "^1.6.2",
+    "element-ultra": "0.1.6",
     "esbuild": "^0.14.53",
     "fastify": "^4.3.0",
     "fastify-plugin": "^4.0.0",
     "fe-dk": "^1.0.14",
     "pump": "^3.0.0",
-    "undici": "^5.8.0",
-    "element-ultra": "0.1.6"
+    "undici": "^5.8.0"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^22.0.2",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^14.1.0",
     "@types/node": "^18.6.3",
+    "fs-extra": "^10.1.0",
     "nodemon": "^2.0.19",
     "pino-pretty": "^8.1.0",
+    "rollup": "^2.79.0",
+    "rollup-plugin-esbuild": "^4.10.1",
     "tsx": "^3.8.0",
     "typescript": "^4.7.4",
-    "vite": "^3.1.0"
+    "vite": "^3.1.0",
+    "sass": "^1.54.9"
   }
 }

@@ -1,11 +1,11 @@
 import { createWriteStream, readdirSync, unlinkSync } from 'node:fs'
 import path from 'node:path'
-import { cwd } from 'node:process'
 import createRouter from '../utils/createRouter'
 import { response } from '../utils/reply'
 import { pumpAsync } from '../utils/stream'
 
-const dataPath = path.resolve(cwd(), 'packages/server/router')
+/** 资源路径 */
+const dataPath = path.resolve('/data/assets')
 
 const getDataImages = () => {
   return readdirSync(dataPath).filter(item => {
@@ -15,18 +15,20 @@ const getDataImages = () => {
 
 export default createRouter('upload', {
   Post: {
-    '/': async (req, reply) => {
+    '/': async req => {
       const data = await req.file()
       if (!data) {
         return response(null)
       }
+
       const images = getDataImages()
       if (images.includes(data.filename)) {
         unlinkSync(path.resolve(dataPath, data.filename))
       }
-      await pumpAsync(data.file, createWriteStream(data.filename))
 
-      return response(null)
+      await pumpAsync(data.file, createWriteStream(path.resolve(dataPath, data.filename)))
+
+      return response('/' + data.filename)
     }
   },
   Get: {

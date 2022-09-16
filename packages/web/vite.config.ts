@@ -58,13 +58,25 @@ export const ultraResolver: ComponentResolver[] = [
   }
 ]
 
-
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(),
+  plugins: [
+    vue(),
     Components({
       dts: false,
       include: [/\.vue$/, /\.tsx?$/],
       resolvers: [...ultraResolver]
-    }),]
+    })
+  ],
+
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:22333',
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/api/, '')
+      }
+    },
+    host: true
+  }
 })
