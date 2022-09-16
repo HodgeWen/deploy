@@ -2,9 +2,11 @@
   "name": "deploy",
   "version": "1.0.0",
   "description": "",
+  "type": "commonjs",
   "scripts": {
     "server": "nodemon --watch packages/server --exec \"tsx\" packages/server/start.ts",
     "build-server": "tsx build/index.ts",
+    "build": "tsc packages/server/start.ts",
     "dep": "tsx packages/client/src/cli.ts"
   },
   "keywords": [],

@@ -21,11 +21,11 @@
     // 不允许存在未使用的本地变量(为true意味着本地声明的变量不使用会报错, 导入的不会)
     "noUnusedLocals": true,
     // 允许合成默认导入, 为true意味着可以将一个没有默认导出的模块导出为对象, 只要import * as O from 'module'
-    "allowSyntheticDefaultImports": true,
+    // "allowSyntheticDefaultImports": true,
     // 跳过类型检查
     "skipLibCheck": true,
     // ES模块互操作性, 一旦指定, allowSyntheticDefaultImports选项会被设置为true
-    "esModuleInterop": true,
+    // "esModuleInterop": true,
     // 源代码映射
     "sourceMap": true,
     // 强制文件名称一致(解决文件大小写不敏感的bug)
