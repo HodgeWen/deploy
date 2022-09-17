@@ -18,6 +18,7 @@ const writeBundle = async () => {
         },
 
 
+
       }),
       json(),
       nodeResolve({
@@ -33,7 +34,8 @@ const writeBundle = async () => {
     dir,
     sourcemap: false,
     exports: 'auto',
-    preserveModules: true
+    preserveModules: true,
+
   })
 }
 
