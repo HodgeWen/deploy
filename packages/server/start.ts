@@ -1,6 +1,6 @@
 import Fastify from 'fastify'
 import multipart from '@fastify/multipart'
-import cors from '@fastify/cors'
+// import cors from '@fastify/cors'
 
 import router from './router'
 
@@ -19,10 +19,10 @@ const fastify = Fastify({
 })
 
 fastify.register(multipart)
-fastify.register(cors)
+// fastify.register(cors)
 
 router(fastify)
 
-fastify.listen({ port: 22333 }).catch(reason => {
+fastify.listen({ port: 22333, host: '0.0.0.0' }).catch(reason => {
   fastify.log.error(reason)
 })
