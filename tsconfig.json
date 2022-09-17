@@ -3,7 +3,10 @@
     { "path": "./packages/client/tsconfig.json" },
     { "path": "./packages/server/tsconfig.json" },
     { "path": "./packages/web/tsconfig.json" }
-  ]
+  ],
+  "compilerOptions": {
+    "declaration": false
+  }
   // "compilerOptions": {
   //   "jsx": "preserve",
   //   // 严格模式

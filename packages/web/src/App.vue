@@ -18,7 +18,7 @@ import { Http } from 'fe-dk'
 import { shallowReactive, shallowRef } from 'vue'
 
 const http = new Http({
-  baseUrl: 'http://localhost:22333'
+  baseUrl: '/api'
 })
 
 const handleClick = (index: number) => {

@@ -25,8 +25,7 @@
     // 指定一个导入的内容在不作为值使用时的行为, 如果导入一个类型, 需要使用 import type, 这个能解决循环引用的bug
     "importsNotUsedAsValues": "error",
     // 孤立模块, 设置了则所有实现的文件都是模块, 并且可以保持编译时的模块结构, 而不是编译到一个文件中去
-    "isolatedModules": true,
-    
+    "isolatedModules": true
   },
   "exclude": ["node_modules"]
 }

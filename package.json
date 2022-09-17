@@ -5,8 +5,6 @@
   "type": "commonjs",
   "scripts": {
     "server": "nodemon --watch packages/server --exec \"tsx\" packages/server/start.ts",
-    "build-server": "tsx build/index.ts",
-    "build": "tsc -p tsconfig.json",
     "dep": "tsx packages/client/src/cli.ts"
   },
   "keywords": [],
@@ -36,8 +34,8 @@
     "pino-pretty": "^8.1.0",
     "rollup": "^2.79.0",
     "rollup-plugin-esbuild": "^4.10.1",
-    "tsx": "^3.8.0",
-    "typescript": "^4.7.4",
+    "tsx": "^3.9.0",
+    "typescript": "^4.8.3",
     "vite": "^3.1.0",
     "sass": "^1.54.9"
   }
