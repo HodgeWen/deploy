@@ -16,7 +16,7 @@
 
   <div class="upload-item">
     <div class="wrap" @click="audioRef?.click()">
-      <audio v-if="audioUrl" :src="`http://assets.wenhongjie.tech${audioUrl}`" />
+      <audio controls  v-if="audioUrl" :src="`http://assets.wenhongjie.tech/${audioUrl}`" />
       <el-button type="primary" v-else>上传</el-button>
       <input
         hidden
