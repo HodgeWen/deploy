@@ -9,7 +9,7 @@ const dataPath = path.resolve('/data/assets')
 
 const getDataImages = () => {
   return readdirSync(dataPath).filter(item => {
-    return /\.(jpg|png)$/.test(item)
+    return /\.(jpg|png|mp3)$/.test(item)
   })
 }
 
