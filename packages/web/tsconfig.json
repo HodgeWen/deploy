@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "jsx": "preserve",
+    "module": "ESNext",
+    // 指定包含的类型库
+    "lib": ["ESNext", "DOM"],
+    "types": ["vite/client", "element-ultra/global"],
+    "outDir": "./dist",
+    // 源代码映射
+    "sourceMap": true,
+  }
+}

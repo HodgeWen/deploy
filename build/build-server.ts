@@ -17,6 +17,7 @@ const writeBundle = async () => {
           '.json': 'json'
         },
 
+
       }),
       json(),
       nodeResolve({

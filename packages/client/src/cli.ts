@@ -4,7 +4,7 @@ import { tar } from 'compressing'
 import { join, resolve } from 'path'
 import { cwd } from 'process'
 import { createWriteStream, unlinkSync } from 'fs'
-import pump from 'pump'
+import  pump from 'pump'
 import log from './log'
 import { readFile } from 'fs/promises'
 
