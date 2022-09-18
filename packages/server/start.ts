@@ -18,7 +18,11 @@ const fastify = Fastify({
   }
 })
 
-fastify.register(multipart)
+fastify.register(multipart, {
+  limits: {
+    fileSize: 1024 * 1024 * 20
+  }
+})
 // fastify.register(cors)
 
 router(fastify)
